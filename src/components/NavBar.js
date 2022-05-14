@@ -19,7 +19,7 @@ export default function NavBar() {
               <Link className='nav-link' to="/">Home</Link>
             </Nav.Item>
             <Nav.Item>
-              <Link className='nav-link' to="/recipes">My Recipes</Link>
+              <Link className='nav-link' to="/my-recipes">My Recipes</Link>
             </Nav.Item>
             <Nav.Item>
               <Link className='nav-link' to="/new-recipe">New Recipe</Link>

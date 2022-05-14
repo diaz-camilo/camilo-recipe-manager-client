@@ -4,20 +4,10 @@ import Signup from './components/Signup';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
 import Recipe from './components/recipes/Recipe';
+import RecipeListing from './components/recipes/RecipeListing';
+import RecipeForm from './components/recipes/RecipeForm';
 
 function App() {
-
-  const recipeTest = {
-    id: "Test name",
-    ingredients: [
-      { name: 'chicken breast', quantity: 2, unit: 'kg' },
-      { name: 'oil', quantity: 1, unit: 'tbs' },
-      { name: 'salt', quantity: 1, unit: 'pinch' },
-    ],
-    steps: [
-      'heat pan', 'place chiken on hot pan', 'season with salt'
-    ]
-  }
 
   return (
     <Router>
@@ -29,7 +19,9 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/test" element={<Recipe {...recipeTest} />} />
+          <Route path="/test" element={<RecipeListing />} />
+          <Route path="/my-recipes" element={<RecipeListing />} />
+          <Route path="/new-recipe" element={<RecipeForm />} />
           <Route path="*" element={<div>
             <h1>There is nothing here</h1>
           </div>} />

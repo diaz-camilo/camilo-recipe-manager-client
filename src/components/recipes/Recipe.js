@@ -14,7 +14,7 @@ export default function Recipe(props) {
   }
 
   return (
-    <Card className='me-auto mb-auto my-2' /*style={{ width: '18rem', height: '30rem' }}*/>
+    <Card /*className='me-auto mb-auto my-2' /*style={{ width: '18rem', height: '30rem' }}*/>
       <Card.Body>
         <Card.Title as={'h1'} >{id}</Card.Title>
         <hr />
