@@ -19,7 +19,6 @@ function App() {
         <Routes>
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/test" element={<RecipeListing />} />
           <Route path="/my-recipes" element={<RecipeListing />} />
           <Route path="/new-recipe" element={<RecipeForm />} />
           <Route path="*" element={<div>

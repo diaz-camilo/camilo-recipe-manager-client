@@ -10,43 +10,7 @@ export function useAppContext() {
 
 export function AppContextProvider({ children }) {
 
-  const currentUserTest = {
-    passwordHash: "$2a$10$3PRp6XrGr4ybXSF.vpWKlu.CLLlYzryTF7C6KoOqpKxue7Gp7Egr6",
-    recipes: [
-      {
-        id: "empanadas",
-        ingredients: [
-          { name: 'potato', quantity: 2, unit: 'unit' },
-          { name: 'oil', quantity: 1, unit: 'lt' },
-          { name: 'corn', quantity: 1, unit: 'kg' },
-        ],
-        steps: [
-          "make dough",
-          "make filling",
-          "make a disc with the dough",
-          "fold",
-          "fry"
-        ],
-      },
-      {
-        id: "Test name",
-        ingredients: [
-          { name: 'chicken breast', quantity: 2, unit: 'kg' },
-          { name: 'oil', quantity: 1, unit: 'tbs' },
-          { name: 'salt', quantity: 1, unit: 'pinch' },
-        ],
-        steps: [
-          'heat pan',
-          'place chiken on hot pan',
-          'season with salt'
-        ]
-      }
-
-    ],
-    email: "abc@abc.com"
-  }
-
-  const [currentUser, setCurrentUser] = useState(currentUserTest);
+  const [currentUser, setCurrentUser] = useState(null);
 
   const email = currentUser && currentUser.email;
 
@@ -80,8 +44,15 @@ export function AppContextProvider({ children }) {
    * @param {Object} recipe 
    * @returns 
    */
-  const createRecipe = (recipe) => {
-    return axios.post(`${API_URL}/recipes/create`, { email, recipe })
+  const createRecipe = async (recipe) => {
+    try {
+      const response = await axios.post(`${API_URL}/recipes/create`, { email, recipe })
+      const updatedUser = response.data;
+      setCurrentUser(updatedUser)
+      return true
+    } catch (error) {
+      throw 'recipe not created'
+    }
   }
 
   /**
@@ -106,8 +77,15 @@ export function AppContextProvider({ children }) {
    * @param {Object} recipe 
    * @returns 
    */
-  const updateRecipe = (recipe) => {
-    return axios.post(`${API_URL}/recipes/update`, { email, recipe })
+  const updateRecipe = async (recipe) => {
+    try {
+      const response = await axios.post(`${API_URL}/recipes/update`, { email, recipe })
+      const updatedUser = response.data;
+      setCurrentUser(updatedUser)
+      return true
+    } catch (error) {
+      throw 'recipe not updated'
+    }
   }
 
   /**
@@ -115,8 +93,15 @@ export function AppContextProvider({ children }) {
    * @param {Object} recipe 
    * @returns 
    */
-  const deleteRecipe = (id) => {
-    return axios.get(`${API_URL}/recipes/delete`, { params: { email, id } })
+  const deleteRecipe = async (id) => {
+    try {
+      const response = await axios.get(`${API_URL}/recipes/delete`, { params: { email, id } })
+      const updatedUser = response.data;
+      setCurrentUser(updatedUser)
+      return true
+    } catch (error) {
+      throw 'recipe not deleted'
+    }
   }
 
   const value = {

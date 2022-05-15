@@ -3,15 +3,9 @@ import { Button, Card, Image } from 'react-bootstrap';
 
 export default function Recipe(props) {
 
-  const { id, ingredients, steps, picture } = props;
+  const { id, ingredients, steps, picture, handleEdit, handleDelete } = props;
 
-  function handleEdit() {
-    console.log("edit button clicked");
-  }
-
-  function handleDelete() {
-    console.log("delete button clicked");
-  }
+  if (!id || !ingredients || !steps) return
 
   return (
     <Card /*className='me-auto mb-auto my-2' /*style={{ width: '18rem', height: '30rem' }}*/>
@@ -38,14 +32,14 @@ export default function Recipe(props) {
         <Button
           variant={'outline-primary'}
           size='sm'
-          onClick={() => handleEdit()}
+          onClick={() => handleEdit({ id, ingredients, steps, picture })}
         >
           Edit
         </Button>
         <Button
           variant={'outline-danger'}
           size='sm'
-          onClick={() => handleDelete()}
+          onClick={() => handleDelete(id)}
         >
           Delete
         </Button>

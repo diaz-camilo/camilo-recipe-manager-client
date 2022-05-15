@@ -10,7 +10,6 @@ export default function RecipeIngredients(props) {
   const nameRef = useRef()
 
   const handleAddIngredient = (e) => {
-    console.log('hello world');
     e.preventDefault();
     const quantity = quantityRef.current.value;
     const unit = unitRef.current.value;

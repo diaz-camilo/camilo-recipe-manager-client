@@ -29,18 +29,18 @@ export default function RecipeSteps(props) {
           <Form.Control className='mb-3' ref={stepRef} required />
           <Button className='w-100' variant='outline-primary' onClick={handleAddStep} >Add step</Button>
         </Form.Group>
-        <Form.Group className='mb-3' as={Row}>
-          <Form.Text>
-            <ol>
-              {stepsArr.map((step, index) => <li key={index} >
-                <div className='d-flex justify-content-between mb-2'>
-                  {step} <Button variant='outline-danger' size='sm' onClick={() => handleRemoveStep(index)}>Remove</Button>
-                </div>
-              </li>)}
-            </ol>
-          </Form.Text>
-        </Form.Group>
       </Form>
+      <Form.Group className='mb-3' as={Row}>
+        <Form.Text>
+          <ol>
+            {stepsArr.map((step, index) => <li key={index} >
+              <div className='d-flex justify-content-between mb-2'>
+                {step} <Button variant='outline-danger' size='sm' onClick={() => handleRemoveStep(index)}>Remove</Button>
+              </div>
+            </li>)}
+          </ol>
+        </Form.Text>
+      </Form.Group>
     </>
   )
 }
