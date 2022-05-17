@@ -6,6 +6,7 @@ import NavBar from './components/NavBar';
 import Recipe from './components/recipes/Recipe';
 import RecipeListing from './components/recipes/RecipeListing';
 import RecipeForm from './components/recipes/RecipeForm';
+import TastyRecipeListing from './components/TastyRecipeListing';
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
         style={{ minHeight: "100vh" }}
       >
         <Routes>
+          <Route path="/" element={<TastyRecipeListing />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/my-recipes" element={<RecipeListing />} />
