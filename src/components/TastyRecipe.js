@@ -3,35 +3,31 @@ import { Card, Image } from 'react-bootstrap';
 
 export default function TastyRecipe(props) {
 
-  const { name, instructions, tags, yields, thumbnail_url, credits, description } = props;
+  const {
+    name,
+    thumbnail_url,
+    credits,
+    canonical_id,
+    slug
+  } = props;
+
+  const kind = canonical_id.includes('recipe') ? 'recipe' : 'compilation';
+  const link = `https://tasty.co/${kind}/${slug}`
 
   return (
-    <Card className='mb-2 mt-2' style={{ width: '40rem' }}>
+
+    <Card className='mb-2 mt-2' style={{ width: '20rem' }}>
       <Card.Body>
-        <Card.Title as={'h1'} >{name}</Card.Title>
-        {description && <p>{description}</p>}
+        <a href={link} style={{ textDecoration: 'none' }} >
+          <Card.Title as={'h1'} >{name}</Card.Title>
+        </a>
         <hr />
-        {instructions && <>
-          <h2>instructions</h2>
-          <p>{yields}</p>
-          <ol>
-            {instructions?.map(ins => <li key={ins.id}>{ins.display_text}</li>)}
-          </ol>
-          <hr />
-        </>}
-        {!!tags.length && <>
-          <h2>Tags</h2>
-          <ul>
-            {tags.map((tag) => <li key={tag.id}>{tag.display_name}</li>)}
-          </ul>
-        </>}
       </Card.Body>
       <Image src={thumbnail_url} />
-
       <Card.Footer >
         <h3>By: {credits[0].name}</h3>
       </Card.Footer>
-
     </Card>
+
   )
 }

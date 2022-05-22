@@ -24,9 +24,6 @@ export default function NavBar() {
             <Nav.Item>
               <Link className='nav-link' to="/new-recipe">New Recipe</Link>
             </Nav.Item>
-            <Nav.Item>
-              <Link className='nav-link' to="/query-recipe">Search Recipe</Link>
-            </Nav.Item>
           </Nav>
           <Nav>
             {currentUser

@@ -68,7 +68,7 @@ export default function RecipeForm(props) {
   return (
     <>
       <div className='w-100' style={{ maxWidth: "600px" }}>
-        <h1 className='text-center mb-4'>New Recipe</h1>
+        {!isEdit && <h1 className='text-center mb-4'>New Recipe</h1>}
         <Card>
           <Card.Body>
             <h2 className='text-center mb-4'>{recipeName}</h2>
